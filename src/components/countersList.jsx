@@ -20,29 +20,20 @@ const CountersList = () => {
     };
 
     const incrementHandler = (counterId) => {
-        // находим индекс в массиве нужного элемента
-        const index = counters.findIndex(({id}) => counterId === id);
-        // делаем полное копирования массива с объектами с состоянием
-        const cloneCounter = JSON.parse(JSON.stringify(counters));
-        // обновляем value
-        cloneCounter[index].value += 1;
-        // обновляем состояние
-        setCounters(cloneCounter);
-        
-        // Это не сработало
-        // const update = {...counters[index], ...counters[index].value++}
-        // const newState = [
-        //     ...counters.slice(0, index),
-        //     update,
-        //     ...counters.slice(index + 1)
-        // ]
+        const index = counters.findIndex(({ id }) => counterId === id);
+        const update = { ...counters[index], value: counters[index].value += 1 };
+        const newState = [
+            ...counters.slice(0, index),
+            update,
+            ...counters.slice(index + 1)
+        ]
 
-        // Это тоже не сработало
-        // counters[index].value += 1;
+        setCounters(newState)
+
     }
 
     const decrementHandler = (counterId) => {
-        const index = counters.findIndex(({id}) => counterId === id);
+        const index = counters.findIndex(({ id }) => counterId === id);
         const cloneCounter = JSON.parse(JSON.stringify(counters));
         cloneCounter[index].value -= 1;
         if (cloneCounter[index].value >= 0) {
