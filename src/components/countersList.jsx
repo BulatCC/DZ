@@ -22,7 +22,7 @@ const CountersList = () => {
     const incrementHandler = (counterId) => {
         // находим индекс в массиве нужного элемента
         const index = counters.findIndex(({id}) => counterId === id);
-        // делаем полное копирования объекта с состоянием
+        // делаем полное копирования массива с объектами с состоянием
         const cloneCounter = JSON.parse(JSON.stringify(counters));
         // обновляем value
         cloneCounter[index].value += 1;
