@@ -27,9 +27,7 @@ const CountersList = () => {
             update,
             ...counters.slice(index + 1)
         ]
-
-        setCounters(newState)
-
+        setCounters(newState);
     }
 
     const decrementHandler = (counterId) => {
