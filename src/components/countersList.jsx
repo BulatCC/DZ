@@ -32,10 +32,14 @@ const CountersList = () => {
 
     const decrementHandler = (counterId) => {
         const index = counters.findIndex(({ id }) => counterId === id);
-        const cloneCounter = JSON.parse(JSON.stringify(counters));
-        cloneCounter[index].value -= 1;
-        if (cloneCounter[index].value >= 0) {
-            setCounters(cloneCounter);
+        if (counters[index].value > 0) {
+            const update = { ...counters[index], value: counters[index].value -= 1 };
+            const newState = [
+                ...counters.slice(0, index),
+                update,
+                ...counters.slice(index + 1)
+            ]
+            setCounters(newState);
         }
     }
 
