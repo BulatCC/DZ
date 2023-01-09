@@ -1,1 +1,1 @@
-# https://dz-seven.vercel.app/
+# https://dz-git-validation-bulatcc.vercel.app/
